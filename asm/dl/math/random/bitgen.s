@@ -51,6 +51,7 @@ PRNG:
     add %rsi, %rdi          ; Summing them all into RSI.
     add %rsi, %rbp          ;
     add %rsi, %r8           ;
+    call SQRT
 
 Square:
 
@@ -89,7 +90,4 @@ SQRT:
 	mov eax, DWORD [rbp-16]
 	mov esi, eax
 	lea rdi, [rel formatter]
-	mov eax, 0
-	mov eax, 0	; now cleanup
-	leave
 	ret
