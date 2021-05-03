@@ -1,22 +1,58 @@
-seed31pmc:
-    .long 1
-
-constapmc:
-    .long 16807
-
-hi:
-    .long 0
-
-lo:
-    .long 0
-
 .globl PRNG
 .type PRNG, @function
 
+.globl Square
+.type Square, @function
+
+reg1:
+    .long 0
+
+reg2: 
+    .long 0
+
+reg3:
+    .long 0
+
+reg4:
+    .long 0
+
 PRNG:
-    mov constapmc(,1), %eax  ; Load Variables 
-    mov seed31pmc(,1), %ebx  ;
-    mov 0xFFFF, %ecx         ;
-    and %ecx, %ebx           ; AND bitwise, output is in ecx, this is var lo.
-    imul %eax, %ecx          ; multiply. lo is still in ecx.
-    mov %ecx, lo(,1)         ; Drop valus into lo.
+    ; Reads eax, ebx, ecx, and edx, and squares them, sums the result, and then square roots that.
+    mov %eax, reg1(,1)      ; Drops the values into the variables.
+    mov %ebx, reg2(,1)      ;
+    mov %ecx, reg3(,1)      ;
+    mov %edx, reg4(,1)      ;
+
+    pushl %eax
+    call Square
+    mov %rsx, %eax
+    mov %rsx(,4), %edx
+    
+    pushl %ebx
+    call Square
+    mov %rsx, %eax
+    mov %rsx(,4), %edx
+    
+    pushl %ecx
+    call Square
+    mov %rsx, %eax
+    mov %rsx(,4), %edx
+    
+    mov %esp, %edx
+    pushl %edx
+    call Square
+    mov %rsx, %eax
+    mov %rsx(,4), %edx
+    mov %esp, %edx
+
+    
+
+Square:
+
+    mov %esp, %eax
+    subl 4, %esp
+    push %edx
+
+    mul %eax
+    
+    ret
