@@ -4,6 +4,9 @@
 .globl Square
 .type Square, @function
 
+.globl SQRT
+.type SQRT, @function
+
 reg1:
     .long 0
 
@@ -58,3 +61,36 @@ Square:
     mul %eax
     
     ret
+
+SQRT:
+    push    rbp	; get everything ready by moving to the stack in memory
+    mov     rbp, rsp ; set the instruction pointer to the stack pointer
+    sub     rsp, 16	 ; make room for some memory
+	mov     DWORD [rbp-4], 64 ; load in the value 64
+	mov     eax, DWORD [rbp-4] ; find length
+    bsr     eax, eax
+    xor     eax, 31
+	mov     DWORD [rbp-8], eax
+	mov     eax, 32	; subtract [rbp-8] (lead_bytes) from 32
+	sub     eax, DWORD [rbp-8]
+	mov     DWORD [rbp-12], eax
+	mov     eax, DWORD [rbp-12]
+	mov     edx, eax
+	shr     edx, 31
+	add     eax, edx
+	sar     eax, 1
+	mov     DWORD [rbp-12], eax
+	mov     eax, DWORD [rbp-12] ; shift bits right by len/2
+	mov     edx, DWORD [rbp-4]
+	mov     ecx, eax
+	sar     edx, cl
+	mov     eax, edx
+	mov     DWORD [rbp-16], eax ; time to print
+	mov     eax, DWORD [rbp-16]
+	mov     esi, eax
+	lea     rdi, [rel formatter]
+	mov     eax, 0
+	call    _printf
+	mov     eax, 0	; now cleanup
+	leave
+	ret
