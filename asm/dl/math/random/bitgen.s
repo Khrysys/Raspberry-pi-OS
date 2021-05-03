@@ -23,29 +23,31 @@ PRNG:
     mov %ecx, reg3(,1)      ;
     mov %edx, reg4(,1)      ;
 
-    pushl %eax
-    call Square
-    mov %rsx, %eax
-    mov %rsx(,4), %edx
+    pushl %eax              ; Squaring all the variables.
+    call Square             ;
+    mov %rsi, %eax          ;
+    mov %rsi(,4), %edx      ;
     
-    pushl %ebx
-    call Square
-    mov %rsx, %eax
-    mov %rsx(,4), %edx
+    pushl %ebx              ;
+    call Square             ;
+    mov %rdi, %eax          ;
+    mov %rdi(,4), %edx      ;
     
-    pushl %ecx
-    call Square
-    mov %rsx, %eax
-    mov %rsx(,4), %edx
+    pushl %ecx              ;
+    call Square             ;   
+    mov %rbp, %eax          ;
+    mov %rbp(,4), %edx      ;   
     
-    mov %esp, %edx
-    pushl %edx
-    call Square
-    mov %rsx, %eax
-    mov %rsx(,4), %edx
-    mov %esp, %edx
+    mov %esp, %edx          ;   
+    pushl %edx              ;
+    call Square             ;
+    mov %r8, %eax           ;
+    mov %r8(,4), %edx       ;
+    mov %esp, %edx          ;
 
-    
+    add %rsi, %rdi          ; Summing them all into RSI.
+    add %rsi, %rbp          ;
+    add %rsi, %r8           ;
 
 Square:
 
