@@ -3,11 +3,12 @@ import multiprocessing
 
 class Machine:
     def __init__(self, layers):
+        layerArray = []
         if layers < 1:
             raise OSError('You must specify at least two layers!') 
         else:
             for i in layers:
-                
+
 
     class Layer:
         def __init__(self, cells, sublayers, subcell):
