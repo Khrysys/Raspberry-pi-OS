@@ -2,12 +2,17 @@ from rq import *
 import multiprocessing
 
 class Machine:
+
+    cellArray = []
+
     def __init__(self, layers):
         layerArray = []
         if layers < 1:
             raise OSError('You must specify at least two layers!') 
         else:
             for i in layers:
+                layerArray.append(Layer)
+
 
 
     class Layer:
@@ -35,7 +40,8 @@ class Machine:
                     raise OSError('You must specify a network function!')
 
             def CFunc():
-                if self.function = 
+                if self.function = 1:
+                    
                     
 
 
