@@ -142,4 +142,42 @@ void Status(int code) {
             cout << "Status 499: Client Closed Request.";
         }
     }
+    
+    if (code >= 500 && code < 600) {
+        if (code == 500) {
+            cout << "Status 500: There was an error on the Server and the request could not be completed.";
+        }
+        if (code == 501) {
+            cout << "Status 501: Not Implemented";
+        }
+        if (code == 502) {
+            cout << "Status 502: Bad Gateway.";
+        }
+        if (code == 503) {
+            cout << "Status 503: The server is unable to handle this request right now.";
+        }
+        if (code == 504) {
+            cout << "Status 504: The Server, acting as a Gateway, timed out waiting for another server to respond.";
+        }
+        if (code == 505) {
+            cout << "Status 505: HTTP Version Not Supported.";
+        }
+        if (code == 508) {
+            cout << "Status 508: Resource Limit is Reached.";
+        }
+        if (code == 511) {
+            cout << "Status 511: Network Authentication Required.";
+        }
+        if (code == 521) {
+            cout << "Status 521: Web Server is down.";
+        }
+        if (code == 525) {
+            cout << "Status 525: SSL Handshake Failed.";
+        }
+    }
+    if (code >= 600 && code < 700) {
+        if (code == 600) {
+            cout << "Status 600: Invalid Array Sizes.";
+        }
+    }
 }
