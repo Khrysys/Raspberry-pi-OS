@@ -12,7 +12,7 @@ class Net {
         int outputs;
         int constraints[10];
         void Build() {
-
+            Generate();
         }
 
         void Run() {
@@ -36,7 +36,13 @@ class Net {
         void Generate() {
             if (layers == 1) {
                 Layer layer1;
-                layer1.cells = [cells];
+                layer1.cells = outputs;
+            } else if (layers == 2) {
+                Layer layer1, layer2;
+                layer1.cells = cells[0];
+                layer2.cells = outputs;
+            } else if () {
+                
             }
         }
 
