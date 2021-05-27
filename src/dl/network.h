@@ -11,7 +11,37 @@ class Net {
         int function;
         int outputs;
         int constraints[10];
-        void Build();
-        void Run();
+        void Build() {
+
+        }
+
+        void Run() {
+            epoch = 0;
+            Generate();
+            while(true) {
+                Train();
+                Test();
+            }
+        }
+
+    private:
+        void Train() {
+
+        }
+
+        void Test() {
+
+        }
+
+        void Generate() {
+            if (layers == 1) {
+                Layer layer1;
+                layer1.cells = [cells];
+            }
+        }
+
+    protected:
+        int epoch;
+        Layer layerArray[];
    
 };
