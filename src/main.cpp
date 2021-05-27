@@ -7,9 +7,9 @@
 #include <network.h>
 
 #define RANGE		100
-#define	NUM_LEDS	  8
+#define	NUM_LEDS	  9
 
-int ledMap [NUM_LEDS] = { 0, 1, 2, 3, 4, 5, 6, 7 } ;
+int ledMap [NUM_LEDS] = { 0, 1, 2, 3, 4, 5, 6, 7, 8 } ;
 
 int values [NUM_LEDS] = { 0, 25, 50, 75, 100, 75, 50, 25 } ;
 
