@@ -4,10 +4,8 @@
 using namespace std;
 
 class Net {
-        int layers;
         int cells[10];
         int sublayers[10];
-        int function;
         int constraints[10];
         
         void Train() {
