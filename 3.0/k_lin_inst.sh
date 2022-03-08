@@ -1,0 +1,3 @@
+prefix='[kbuild]'
+
+echo ${prefix}
